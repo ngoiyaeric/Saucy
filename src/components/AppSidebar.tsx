@@ -22,18 +22,19 @@ type NavItemProps = {
 };
 
 const NavItem = ({ to, icon: Icon, label, active }: NavItemProps) => (
-  <Link to={to}>
-    <Button
-      variant="ghost"
-      className={cn(
-        "w-full justify-start gap-3 mb-1 font-normal",
-        active ? "bg-accent text-accent-foreground" : "hover:bg-accent hover:text-accent-foreground"
-      )}
-    >
+  <Button
+    variant="ghost"
+    className={cn(
+      "w-full justify-start gap-3 mb-1 font-normal",
+      active ? "bg-accent text-accent-foreground" : "hover:bg-accent hover:text-accent-foreground"
+    )}
+    asChild
+  >
+    <Link to={to}>
       <Icon size={18} />
       <span>{label}</span>
-    </Button>
-  </Link>
+    </Link>
+  </Button>
 );
 
 type AppSidebarProps = {
@@ -54,7 +55,7 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
       <div className="p-4 flex items-center justify-between border-b border-sidebar-border">
         {!collapsed && (
           <h1 className="font-bold text-lg tracking-tight text-sidebar-foreground">
-            AI Market Master
+            AI Market Masters
           </h1>
         )}
         <Button
