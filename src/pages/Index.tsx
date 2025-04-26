@@ -5,6 +5,7 @@ import { MarketChart } from "@/components/MarketChart";
 import { AgentConfigurator } from "@/components/AgentConfigurator";
 import { RecentActivity } from "@/components/RecentActivity";
 import { AppSidebar } from "@/components/AppSidebar";
+import { MultiAgentBetting } from "@/components/MultiAgentBetting";
 import { Button } from "@/components/ui/button";
 import { LogIn } from "lucide-react";
 
@@ -26,10 +27,10 @@ const Index = () => {
       <div className="min-h-screen flex flex-col items-center justify-center">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-            AI Market Master
+            AI Market Masters
           </h1>
           <p className="text-xl text-muted-foreground max-w-md">
-            Intelligent trading and prediction markets powered by AI
+            Multi-agent prediction markets and trading powered by AI
           </p>
         </div>
         
@@ -86,6 +87,7 @@ const Index = () => {
             </div>
           </div>
           
+          <MultiAgentBetting />
           <RecentActivity />
         </div>
       </main>

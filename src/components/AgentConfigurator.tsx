@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Bot, RefreshCw, Settings, AlertCircle } from "lucide-react";
+import { Bot, RefreshCw, Settings, AlertCircle, MessageSquareCode, Layers } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -14,6 +14,7 @@ export function AgentConfigurator() {
   const [riskLevel, setRiskLevel] = useState([50]);
   const [strategy, setStrategy] = useState("balanced");
   const [isTraining, setIsTraining] = useState(false);
+  const [aiModel, setAiModel] = useState("gpt-4");
   
   const handleTrain = () => {
     setIsTraining(true);
@@ -29,14 +30,14 @@ export function AgentConfigurator() {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Bot className="h-5 w-5 text-primary" />
-            <CardTitle>AI Agent Configuration</CardTitle>
+            <CardTitle>Primary Agent Configuration</CardTitle>
           </div>
           <Badge variant={agentStatus ? "default" : "secondary"}>
             {agentStatus ? "Active" : "Inactive"}
           </Badge>
         </div>
         <CardDescription>
-          Configure your AI trading agent parameters and strategy
+          Configure your primary AI trading agent parameters and strategy
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -87,8 +88,51 @@ export function AgentConfigurator() {
               <SelectItem value="balanced">Balanced Approach</SelectItem>
               <SelectItem value="contrarian">Contrarian Strategy</SelectItem>
               <SelectItem value="sentiment">Sentiment Analysis</SelectItem>
+              <SelectItem value="langchain">LangChain Reasoning</SelectItem>
+              <SelectItem value="ensemble">Multi-Agent Ensemble</SelectItem>
             </SelectContent>
           </Select>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="ai-model-select">AI Foundation Model</Label>
+          <Select value={aiModel} onValueChange={setAiModel}>
+            <SelectTrigger id="ai-model-select">
+              <SelectValue placeholder="Select AI model" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="gpt-4">GPT-4</SelectItem>
+              <SelectItem value="claude-3">Claude 3</SelectItem>
+              <SelectItem value="palm-2">PaLM 2</SelectItem>
+              <SelectItem value="mistral">Mistral</SelectItem>
+              <SelectItem value="llama-3">Llama 3</SelectItem>
+            </SelectContent>
+          </Select>
+          <div className="text-xs text-muted-foreground mt-1">
+            Powers agent reasoning through LangChain integration
+          </div>
+        </div>
+        
+        <div className="flex gap-2">
+          <div className="flex-1 p-3 bg-secondary/50 rounded-lg flex items-start space-x-3">
+            <MessageSquareCode className="h-5 w-5 text-primary mt-0.5" />
+            <div className="text-sm">
+              <p className="font-medium">LangChain</p>
+              <p className="text-muted-foreground mt-1">
+                Enhanced reasoning enabled
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex-1 p-3 bg-secondary/50 rounded-lg flex items-start space-x-3">
+            <Layers className="h-5 w-5 text-market-neutral mt-0.5" />
+            <div className="text-sm">
+              <p className="font-medium">XAI</p>
+              <p className="text-muted-foreground mt-1">
+                Explainability active
+              </p>
+            </div>
+          </div>
         </div>
         
         <div className="p-3 bg-secondary/50 rounded-lg flex items-start space-x-3">

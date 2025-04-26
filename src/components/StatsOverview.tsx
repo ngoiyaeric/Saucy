@@ -3,7 +3,8 @@ import {
   ArrowDownRight, 
   ArrowUpRight,
   Percent,
-  DollarSign 
+  DollarSign,
+  Users 
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -17,11 +18,11 @@ const mockStats = [
     icon: DollarSign
   },
   {
-    title: "Active Predictions",
-    value: "32",
-    change: "+12.3%",
+    title: "Active Agents",
+    value: "8",
+    change: "+3",
     increasing: true,
-    icon: Percent
+    icon: Users
   },
   {
     title: "Win Rate",
