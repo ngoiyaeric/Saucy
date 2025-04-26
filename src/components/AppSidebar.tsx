@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { 
   BarChart2, 
   Bot, 
@@ -43,7 +43,7 @@ type AppSidebarProps = {
 };
 
 export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
-  const pathname = window.location.pathname;
+  const { pathname } = useLocation();
 
   return (
     <aside
@@ -55,7 +55,9 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
       <div className="p-4 flex items-center justify-between border-b border-sidebar-border">
         {!collapsed && (
           <h1 className="font-bold text-lg tracking-tight text-sidebar-foreground">
-            AI Market Masters
+            <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+              AI Market Masters
+            </span>
           </h1>
         )}
         <Button
@@ -151,7 +153,7 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
       <div className="p-4 border-t border-sidebar-border">
         {!collapsed && (
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-medium">
+            <div className="h-9 w-9 rounded-full bg-primary/90 flex items-center justify-center text-primary-foreground font-medium">
               AM
             </div>
             <div className="flex-1 min-w-0">
