@@ -27,7 +27,7 @@ const Index = () => {
       <div className="min-h-screen flex flex-col items-center justify-center">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">
-            AI Market Masters
+            Fluidity Index
           </h1>
           <p className="text-xl text-muted-foreground max-w-md">
             Multi-agent prediction markets and trading powered by AI

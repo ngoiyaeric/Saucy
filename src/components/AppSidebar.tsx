@@ -56,7 +56,7 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
         {!collapsed && (
           <h1 className="font-bold text-lg tracking-tight text-sidebar-foreground">
             <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-              AI Market Masters
+              Fluidity Index
             </span>
           </h1>
         )}
