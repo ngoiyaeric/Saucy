@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Button } from "@/components/ui/button";
@@ -87,6 +86,7 @@ const SettingsPage = () => {
                     <SelectItem value="langgraph">LangGraph Cloud</SelectItem>
                     <SelectItem value="autogen">AutoGen Cloud</SelectItem>
                     <SelectItem value="google">Google ADK</SelectItem>
+                    <SelectItem value="ea-cloud">EA Cloud</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -125,6 +125,16 @@ const SettingsPage = () => {
                     </p>
                   </div>
                 </>
+              )}
+              
+              {cloudProvider === "ea-cloud" && (
+                <div className="space-y-2">
+                  <Label htmlFor="ea-cloud-api">EA Cloud API Key</Label>
+                  <Input id="ea-cloud-api" type="password" placeholder="Enter your EA Cloud API key" />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Get your API key from the EA Cloud dashboard
+                  </p>
+                </div>
               )}
               
               <div className="pt-2">

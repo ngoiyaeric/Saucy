@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Bot, RefreshCw, Settings, AlertCircle, Coins, Cpu } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -140,6 +139,7 @@ export function AgentConfigurator() {
               <SelectItem value="langgraph">LangGraph Cloud</SelectItem>
               <SelectItem value="autogen">AutoGen Cloud</SelectItem>
               <SelectItem value="google">Google ADK</SelectItem>
+              <SelectItem value="ea-cloud">EA Cloud</SelectItem>
             </SelectContent>
           </Select>
           <div className="text-xs text-muted-foreground mt-1">

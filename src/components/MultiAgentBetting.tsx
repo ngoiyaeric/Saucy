@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Users, Hexagon, Layers, Cloud, Globe } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -86,7 +85,8 @@ const mockMarkets = [
 const cloudProviders = [
   { id: "langgraph", name: "LangGraph Cloud", apiEndpointFormat: "https://api.langgraph.com/agents/{id}" },
   { id: "autogen", name: "AutoGen Cloud", apiEndpointFormat: "https://api.autogen-cloud.com/v1/agents/{id}" },
-  { id: "google-adk", name: "Google ADK", apiEndpointFormat: "https://agents.googleapis.com/v1/projects/{project}/agents/{id}" }
+  { id: "google-adk", name: "Google ADK", apiEndpointFormat: "https://agents.googleapis.com/v1/projects/{project}/agents/{id}" },
+  { id: "ea-cloud", name: "EA Cloud", apiEndpointFormat: "https://api.eagents.cloud/agents/{id}" }
 ];
 
 export function MultiAgentBetting() {
@@ -432,7 +432,7 @@ export function MultiAgentBetting() {
               <div>
                 <h4 className="font-medium">Cloud Integration Benefits</h4>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Connect agents from LangGraph Cloud, AutoGen Cloud, or Google ADK to leverage 
+                  Connect agents from LangGraph Cloud, AutoGen Cloud, Google ADK, or EA Cloud to leverage 
                   models and workflows deployed on specialized AI infrastructure. These external 
                   agents work seamlessly with your local agents for optimal performance.
                 </p>
