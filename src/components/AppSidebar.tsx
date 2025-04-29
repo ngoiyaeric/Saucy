@@ -53,12 +53,25 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
       )}
     >
       <div className="p-4 flex items-center justify-between border-b border-sidebar-border">
-        {!collapsed && (
-          <h1 className="font-bold text-lg tracking-tight text-sidebar-foreground">
-            <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-              Fluidity Index
-            </span>
-          </h1>
+        {!collapsed ? (
+          <div className="flex items-center">
+            <img 
+              src="/lovable-uploads/1dc80e14-28e6-47e5-97e6-02b62ea66892.png" 
+              alt="Fluidity Logo" 
+              className="h-6 w-6 mr-2" 
+            />
+            <h1 className="font-bold text-lg tracking-tight text-sidebar-foreground">
+              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                Fluidity Index
+              </span>
+            </h1>
+          </div>
+        ) : (
+          <img 
+            src="/lovable-uploads/1dc80e14-28e6-47e5-97e6-02b62ea66892.png" 
+            alt="Fluidity Logo" 
+            className="h-6 w-6 mx-auto" 
+          />
         )}
         <Button
           variant="ghost"

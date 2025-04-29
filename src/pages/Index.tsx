@@ -26,9 +26,16 @@ const Index = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-blue-300 text-transparent bg-clip-text">
-            Fluidity Index
-          </h1>
+          <div className="flex flex-col items-center">
+            <img 
+              src="/lovable-uploads/1dc80e14-28e6-47e5-97e6-02b62ea66892.png" 
+              alt="Fluidity Index Logo" 
+              className="w-24 h-24 mb-4"
+            />
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-blue-300 text-transparent bg-clip-text">
+              Fluidity Index
+            </h1>
+          </div>
           <p className="text-xl text-muted-foreground max-w-md mb-2">
             Multi-agent prediction markets and trading powered by AI
           </p>
