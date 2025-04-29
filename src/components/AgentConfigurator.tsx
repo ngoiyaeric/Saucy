@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Bot, RefreshCw, Settings, AlertCircle, MessageSquareCode, Layers, Cpu } from "lucide-react";
+import { Bot, RefreshCw, Settings, AlertCircle, MessageSquareCode, Coins, Cpu } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
+import { Progress } from "@/components/ui/progress";
 
 export function AgentConfigurator() {
   const [agentStatus, setAgentStatus] = useState(false);
@@ -147,6 +148,29 @@ export function AgentConfigurator() {
           </div>
         </div>
         
+        <div className="space-y-3">
+          <div className="flex justify-between">
+            <Label>Token Economy</Label>
+            <span className="text-sm font-medium text-market-bull">+4,250 tokens earned</span>
+          </div>
+          
+          <div className="space-y-1">
+            <div className="flex justify-between text-xs">
+              <span className="text-muted-foreground">Tokens Used</span>
+              <span>2,780 / 7,000</span>
+            </div>
+            <Progress value={40} className="h-2" />
+          </div>
+          
+          <div className="space-y-1">
+            <div className="flex justify-between text-xs">
+              <span className="text-muted-foreground">ROI</span>
+              <span className="text-market-bull">+152%</span>
+            </div>
+            <Progress value={152} className="h-2 bg-blue-200" indicatorClassName="bg-market-bull" />
+          </div>
+        </div>
+        
         <div className="flex gap-2">
           <div className="flex-1 p-3 bg-secondary/50 rounded-lg flex items-start space-x-3">
             <MessageSquareCode className="h-5 w-5 text-primary mt-0.5" />
@@ -159,11 +183,11 @@ export function AgentConfigurator() {
           </div>
           
           <div className="flex-1 p-3 bg-secondary/50 rounded-lg flex items-start space-x-3">
-            <Cpu className="h-5 w-5 text-market-neutral mt-0.5" />
+            <Coins className="h-5 w-5 text-market-bull mt-0.5" />
             <div className="text-sm">
-              <p className="font-medium">Cloud Ready</p>
+              <p className="font-medium">Token Tracking</p>
               <p className="text-muted-foreground mt-1">
-                Deploy to any cloud
+                Profit optimized
               </p>
             </div>
           </div>

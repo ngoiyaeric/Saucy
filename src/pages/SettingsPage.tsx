@@ -15,7 +15,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { Cloud, Lock, Key } from "lucide-react";
+import { Cloud, Lock, Key, Coins } from "lucide-react";
 
 const SettingsPage = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -139,6 +139,43 @@ const SettingsPage = () => {
                   </div>
                   <Switch defaultChecked />
                 </div>
+              </div>
+            </CardContent>
+            <CardFooter className="flex justify-between">
+              <Button variant="outline">Reset</Button>
+              <Button onClick={handleSave}>Save</Button>
+            </CardFooter>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <div className="flex items-center space-x-2">
+                <Coins className="h-5 w-5 text-primary" />
+                <CardTitle>Token Economy</CardTitle>
+              </div>
+              <CardDescription>Manage inference tokens and budget allocation</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium">Token Budget Tracking</p>
+                  <p className="text-sm text-muted-foreground">Track inference token usage across agents</p>
+                </div>
+                <Switch defaultChecked />
+              </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium">Profit Optimization</p>
+                  <p className="text-sm text-muted-foreground">Optimize agent strategies for token profitability</p>
+                </div>
+                <Switch defaultChecked />
+              </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-medium">Token Usage Alerts</p>
+                  <p className="text-sm text-muted-foreground">Get notified when agents exceed token budget</p>
+                </div>
+                <Switch defaultChecked />
               </div>
             </CardContent>
             <CardFooter className="flex justify-between">

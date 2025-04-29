@@ -29,8 +29,11 @@ const Index = () => {
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-blue-300 text-transparent bg-clip-text">
             Fluidity Index
           </h1>
-          <p className="text-xl text-muted-foreground max-w-md">
+          <p className="text-xl text-muted-foreground max-w-md mb-2">
             Multi-agent prediction markets and trading powered by AI
+          </p>
+          <p className="text-sm text-blue-400 max-w-md">
+            Next-generation multi-agent superintelligence benchmarks
           </p>
         </div>
         
