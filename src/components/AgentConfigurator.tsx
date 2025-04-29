@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Bot, RefreshCw, Settings, AlertCircle, MessageSquareCode, Layers } from "lucide-react";
+import { Bot, RefreshCw, Settings, AlertCircle, MessageSquareCode, Layers, Cpu } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -8,6 +8,7 @@ import { Slider } from "@/components/ui/slider";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { toast } from "@/hooks/use-toast";
 
 export function AgentConfigurator() {
   const [agentStatus, setAgentStatus] = useState(false);
@@ -15,13 +16,28 @@ export function AgentConfigurator() {
   const [strategy, setStrategy] = useState("balanced");
   const [isTraining, setIsTraining] = useState(false);
   const [aiModel, setAiModel] = useState("gpt-4");
+  const [deployTarget, setDeployTarget] = useState("local");
   
   const handleTrain = () => {
     setIsTraining(true);
     // In a real app, this would trigger an API call to train the model
     setTimeout(() => {
       setIsTraining(false);
+      toast({
+        title: "Agent trained successfully",
+        description: "Model has been updated with the latest market data",
+        variant: "default"
+      });
     }, 2500);
+  };
+
+  const handleStatusChange = (checked: boolean) => {
+    setAgentStatus(checked);
+    toast({
+      title: checked ? "Agent activated" : "Agent deactivated",
+      description: checked ? "Your agent is now running and monitoring markets" : "Your agent has been stopped",
+      variant: "default"
+    });
   };
 
   return (
@@ -51,7 +67,7 @@ export function AgentConfigurator() {
           <Switch
             id="agent-status"
             checked={agentStatus}
-            onCheckedChange={setAgentStatus}
+            onCheckedChange={handleStatusChange}
           />
         </div>
         
@@ -113,6 +129,24 @@ export function AgentConfigurator() {
           </div>
         </div>
         
+        <div className="space-y-2">
+          <Label htmlFor="deploy-target">Deployment Target</Label>
+          <Select value={deployTarget} onValueChange={setDeployTarget}>
+            <SelectTrigger id="deploy-target">
+              <SelectValue placeholder="Select deployment target" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="local">Local (This platform)</SelectItem>
+              <SelectItem value="langgraph">LangGraph Cloud</SelectItem>
+              <SelectItem value="autogen">AutoGen Cloud</SelectItem>
+              <SelectItem value="google">Google ADK</SelectItem>
+            </SelectContent>
+          </Select>
+          <div className="text-xs text-muted-foreground mt-1">
+            Choose where to deploy and run this agent
+          </div>
+        </div>
+        
         <div className="flex gap-2">
           <div className="flex-1 p-3 bg-secondary/50 rounded-lg flex items-start space-x-3">
             <MessageSquareCode className="h-5 w-5 text-primary mt-0.5" />
@@ -125,11 +159,11 @@ export function AgentConfigurator() {
           </div>
           
           <div className="flex-1 p-3 bg-secondary/50 rounded-lg flex items-start space-x-3">
-            <Layers className="h-5 w-5 text-market-neutral mt-0.5" />
+            <Cpu className="h-5 w-5 text-market-neutral mt-0.5" />
             <div className="text-sm">
-              <p className="font-medium">XAI</p>
+              <p className="font-medium">Cloud Ready</p>
               <p className="text-muted-foreground mt-1">
-                Explainability active
+                Deploy to any cloud
               </p>
             </div>
           </div>
