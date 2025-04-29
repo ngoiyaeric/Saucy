@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Bot, RefreshCw, Settings, AlertCircle, MessageSquareCode, Coins, Cpu } from "lucide-react";
+import { Bot, RefreshCw, Settings, AlertCircle, Coins, Cpu } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
@@ -105,7 +105,6 @@ export function AgentConfigurator() {
               <SelectItem value="balanced">Balanced Approach</SelectItem>
               <SelectItem value="contrarian">Contrarian Strategy</SelectItem>
               <SelectItem value="sentiment">Sentiment Analysis</SelectItem>
-              <SelectItem value="langchain">LangChain Reasoning</SelectItem>
               <SelectItem value="ensemble">Multi-Agent Ensemble</SelectItem>
             </SelectContent>
           </Select>
@@ -126,7 +125,7 @@ export function AgentConfigurator() {
             </SelectContent>
           </Select>
           <div className="text-xs text-muted-foreground mt-1">
-            Powers agent reasoning through LangChain integration
+            Powers agent reasoning and decision making capabilities
           </div>
         </div>
         
@@ -173,11 +172,11 @@ export function AgentConfigurator() {
         
         <div className="flex gap-2">
           <div className="flex-1 p-3 bg-secondary/50 rounded-lg flex items-start space-x-3">
-            <MessageSquareCode className="h-5 w-5 text-primary mt-0.5" />
+            <Cpu className="h-5 w-5 text-primary mt-0.5" />
             <div className="text-sm">
-              <p className="font-medium">LangChain</p>
+              <p className="font-medium">AI Processing</p>
               <p className="text-muted-foreground mt-1">
-                Enhanced reasoning enabled
+                Advanced inference enabled
               </p>
             </div>
           </div>

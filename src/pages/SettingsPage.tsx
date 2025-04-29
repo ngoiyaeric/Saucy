@@ -47,16 +47,12 @@ const SettingsPage = () => {
                 <Key className="h-5 w-5 text-primary" />
                 <CardTitle>API Configuration</CardTitle>
               </div>
-              <CardDescription>Configure your API connections for Polymarket, LangChain, and cloud services</CardDescription>
+              <CardDescription>Configure your API connections for Polymarket and cloud services</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="polymarket-api">Polymarket API Key</Label>
                 <Input id="polymarket-api" type="password" placeholder="Enter your Polymarket API key" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="langchain-api">LangChain API Key</Label>
-                <Input id="langchain-api" type="password" placeholder="Enter your LangChain API key" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="coinbase-api">Coinbase API Key</Label>

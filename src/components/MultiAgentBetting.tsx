@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Users, Hexagon, MessageSquareCode, Layers, Cloud, Globe } from "lucide-react";
+import { Users, Hexagon, Layers, Cloud, Globe } from "lucide-react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -93,7 +93,6 @@ export function MultiAgentBetting() {
   const [isConnecting, setIsConnecting] = useState(false);
   const [connectedAPIs, setConnectedAPIs] = useState({
     polymarket: false,
-    langchain: false,
     coinbase: false
   });
   const [newAgent, setNewAgent] = useState({
@@ -169,9 +168,9 @@ export function MultiAgentBetting() {
                 Polymarket Connected
               </Badge>
             ) : null}
-            {connectedAPIs.langchain ? (
+            {connectedAPIs.coinbase ? (
               <Badge variant="outline" className="bg-blue-500/10 text-blue-500 border-blue-500/20">
-                LangChain Connected
+                Coinbase Connected
               </Badge>
             ) : null}
           </div>
@@ -237,11 +236,11 @@ export function MultiAgentBetting() {
             </div>
             
             <div className="bg-secondary/50 p-4 rounded-md flex items-start space-x-3">
-              <MessageSquareCode className="h-5 w-5 text-primary mt-0.5" />
+              <Cloud className="h-5 w-5 text-primary mt-0.5" />
               <div>
                 <h4 className="font-medium">Agent Collaboration</h4>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Your agents are working together using LangChain for reasoning across multiple cloud providers.
+                  Your agents are working together using multi-agent coordination across multiple cloud providers.
                   The ensemble strategy has improved win rates by 12% over individual agents.
                 </p>
               </div>
@@ -307,22 +306,6 @@ export function MultiAgentBetting() {
                     className="w-full"
                   >
                     {connectedAPIs.polymarket ? "Connected" : isConnecting ? "Connecting..." : "Connect"}
-                  </Button>
-                </CardFooter>
-              </Card>
-              
-              <Card className="border border-border">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-md">LangChain</CardTitle>
-                  <CardDescription>Enable advanced reasoning for agents</CardDescription>
-                </CardHeader>
-                <CardFooter>
-                  <Button 
-                    onClick={() => handleConnect('langchain')}
-                    disabled={connectedAPIs.langchain || isConnecting} 
-                    className="w-full"
-                  >
-                    {connectedAPIs.langchain ? "Connected" : isConnecting ? "Connecting..." : "Connect"}
                   </Button>
                 </CardFooter>
               </Card>
