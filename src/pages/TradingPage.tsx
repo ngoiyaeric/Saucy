@@ -4,6 +4,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { MarketChart } from "@/components/MarketChart";
 import { MultiAgentBetting } from "@/components/MultiAgentBetting";
 import { AgentConfigurator } from "@/components/AgentConfigurator";
+import { ChatBot } from "@/components/ChatBot";
 
 const TradingPage = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -30,6 +31,26 @@ const TradingPage = () => {
           </div>
           
           <MultiAgentBetting />
+          
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <ChatBot 
+              title="Trading Assistant" 
+              assistantName="Trade Advisor"
+              className="lg:col-span-2"
+            />
+            <div className="space-y-6">
+              <ChatBot 
+                title="Market News" 
+                variant="mini"
+                assistantName="News Bot"
+              />
+              <ChatBot 
+                title="Trading Tips" 
+                variant="mini"
+                assistantName="Strategy Bot"
+              />
+            </div>
+          </div>
         </div>
       </main>
     </div>
