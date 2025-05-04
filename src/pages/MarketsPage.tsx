@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { AppSidebar } from "@/components/AppSidebar";
 import { MarketChart } from "@/components/MarketChart";
-import { ChatBot } from "@/components/ChatBot";
 
 const MarketsPage = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -21,18 +20,6 @@ const MarketsPage = () => {
           
           <div className="grid grid-cols-1 gap-6">
             <MarketChart />
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ChatBot 
-              title="Market Insights" 
-              assistantName="Market Analyst"
-            />
-            <ChatBot 
-              title="Sentiment Analysis" 
-              variant="compact"
-              assistantName="Sentiment Bot"
-            />
           </div>
         </div>
       </main>

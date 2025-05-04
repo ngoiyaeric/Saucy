@@ -4,7 +4,6 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { AgentConfigurator } from "@/components/AgentConfigurator";
 import { RecentActivity } from "@/components/RecentActivity";
 import { MultiAgentBetting } from "@/components/MultiAgentBetting";
-import { ChatBot } from "@/components/ChatBot";
 
 const AgentsPage = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -30,27 +29,7 @@ const AgentsPage = () => {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2">
-              <RecentActivity />
-            </div>
-            <ChatBot 
-              title="Agent Supervisor" 
-              variant="compact"
-              assistantName="Agent Manager"
-            />
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ChatBot 
-              title="AI Strategy Advisor" 
-              assistantName="Strategy Bot"
-            />
-            <ChatBot 
-              title="Performance Analyzer" 
-              assistantName="Analytics AI"
-            />
-          </div>
+          <RecentActivity />
         </div>
       </main>
     </div>

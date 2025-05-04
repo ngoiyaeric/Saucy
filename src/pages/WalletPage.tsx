@@ -3,7 +3,6 @@ import { useState } from "react";
 import { AppSidebar } from "@/components/AppSidebar";
 import { StatsOverview } from "@/components/StatsOverview";
 import { AIWalletAssistant } from "@/components/AIWalletAssistant";
-import { ChatBot } from "@/components/ChatBot";
 
 const WalletPage = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -55,23 +54,6 @@ const WalletPage = () => {
             </div>
             
             <AIWalletAssistant />
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <ChatBot 
-              title="Crypto Advisor" 
-              assistantName="Crypto Expert"
-            />
-            <ChatBot 
-              title="Risk Management" 
-              variant="compact"
-              assistantName="Risk Bot"
-            />
-            <ChatBot 
-              title="Tax Helper" 
-              variant="compact"
-              assistantName="Tax Bot"
-            />
           </div>
         </div>
       </main>

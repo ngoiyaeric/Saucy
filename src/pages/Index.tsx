@@ -6,7 +6,6 @@ import { AgentConfigurator } from "@/components/AgentConfigurator";
 import { RecentActivity } from "@/components/RecentActivity";
 import { AppSidebar } from "@/components/AppSidebar";
 import { MultiAgentBetting } from "@/components/MultiAgentBetting";
-import { ChatBot } from "@/components/ChatBot";
 import { Button } from "@/components/ui/button";
 import { LogIn } from "lucide-react";
 
@@ -74,12 +73,6 @@ const Index = () => {
               Terms of Service
             </Button>
           </div>
-          
-          <ChatBot 
-            title="Welcome Assistant" 
-            variant="compact"
-            assistantName="Onboarding Bot"
-          />
         </div>
       </div>
     );
@@ -105,17 +98,7 @@ const Index = () => {
           </div>
           
           <MultiAgentBetting />
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2">
-              <RecentActivity />
-            </div>
-            <ChatBot 
-              title="Dashboard Assistant" 
-              variant="compact"
-              assistantName="Analytics Bot"
-            />
-          </div>
+          <RecentActivity />
         </div>
       </main>
     </div>
