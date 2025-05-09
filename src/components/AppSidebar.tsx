@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { 
   BarChart2, 
@@ -13,26 +13,28 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 type NavItemProps = {
   to: string;
   icon: React.ElementType;
   label: string;
   active?: boolean;
+  showLabel?: boolean;
 };
 
-const NavItem = ({ to, icon: Icon, label, active }: NavItemProps) => (
+const NavItem = ({ to, icon: Icon, label, active, showLabel = true }: NavItemProps) => (
   <Button
     variant="ghost"
     className={cn(
-      "w-full justify-start gap-3 mb-1 font-normal",
+      "w-full justify-start gap-3 mb-1 font-normal truncate",
       active ? "bg-accent text-accent-foreground" : "hover:bg-accent hover:text-accent-foreground"
     )}
     asChild
   >
     <Link to={to}>
       <Icon size={18} />
-      <span>{label}</span>
+      {showLabel && <span className="truncate">{label}</span>}
     </Link>
   </Button>
 );
@@ -44,6 +46,16 @@ type AppSidebarProps = {
 
 export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
   const { pathname } = useLocation();
+  const isMobile = useIsMobile();
+  
+  // Force collapse on mobile
+  useEffect(() => {
+    if (isMobile && !collapsed) {
+      toggleSidebar();
+    }
+  }, [isMobile, collapsed, toggleSidebar]);
+  
+  const showLabels = !collapsed && !isMobile;
 
   return (
     <aside
@@ -60,7 +72,7 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
               alt="Fluidity Logo" 
               className="h-6 w-6 mr-2" 
             />
-            <h1 className="font-bold text-lg tracking-tight text-sidebar-foreground">
+            <h1 className="font-bold text-lg tracking-tight text-sidebar-foreground truncate">
               <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
                 Fluidity Index
               </span>
@@ -86,13 +98,13 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
       <nav className="flex-1 px-2 py-4 overflow-y-auto">
         {!collapsed ? (
           <>
-            <NavItem to="/" icon={Home} label="Dashboard" active={pathname === "/"} />
-            <NavItem to="/markets" icon={BarChart2} label="Markets" active={pathname === "/markets"} />
-            <NavItem to="/agents" icon={Bot} label="AI Agents" active={pathname === "/agents"} />
-            <NavItem to="/trading" icon={TrendingUp} label="Trading" active={pathname === "/trading"} />
-            <NavItem to="/wallet" icon={Wallet} label="Wallet" active={pathname === "/wallet"} />
-            <NavItem to="/transactions" icon={CreditCard} label="Transactions" active={pathname === "/transactions"} />
-            <NavItem to="/settings" icon={Settings} label="Settings" active={pathname === "/settings"} />
+            <NavItem to="/" icon={Home} label="Dashboard" active={pathname === "/"} showLabel={showLabels} />
+            <NavItem to="/markets" icon={BarChart2} label="Markets" active={pathname === "/markets"} showLabel={showLabels} />
+            <NavItem to="/agents" icon={Bot} label="AI Agents" active={pathname === "/agents"} showLabel={showLabels} />
+            <NavItem to="/trading" icon={TrendingUp} label="Trading" active={pathname === "/trading"} showLabel={showLabels} />
+            <NavItem to="/wallet" icon={Wallet} label="Wallet" active={pathname === "/wallet"} showLabel={showLabels} />
+            <NavItem to="/transactions" icon={CreditCard} label="Transactions" active={pathname === "/transactions"} showLabel={showLabels} />
+            <NavItem to="/settings" icon={Settings} label="Settings" active={pathname === "/settings"} showLabel={showLabels} />
           </>
         ) : (
           <>
