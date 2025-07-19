@@ -1,5 +1,5 @@
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { StatsOverview } from "@/components/StatsOverview";
 import { MarketChart } from "@/components/MarketChart";
 import { AgentConfigurator } from "@/components/AgentConfigurator";
@@ -8,18 +8,11 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { MultiAgentBetting } from "@/components/MultiAgentBetting";
 import { Button } from "@/components/ui/button";
 import { LogIn } from "lucide-react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Index = () => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [ripples, setRipples] = useState<{ id: number; x: number; y: number }[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 300, damping: 30 });
-  const springY = useSpring(mouseY, { stiffness: 300, damping: 30 });
   
   const toggleSidebar = () => {
     setSidebarCollapsed(!sidebarCollapsed);
@@ -30,40 +23,9 @@ const Index = () => {
     setIsAuthenticated(true);
   };
 
-  const handleMouseMove = (event: React.MouseEvent) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      mouseX.set(event.clientX - rect.left);
-      mouseY.set(event.clientY - rect.top);
-    }
-  };
-
-  const createRipple = (event: React.MouseEvent) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      const newRipple = {
-        id: Date.now(),
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top,
-      };
-      
-      setRipples(prev => [...prev, newRipple]);
-      
-      // Remove ripple after animation
-      setTimeout(() => {
-        setRipples(prev => prev.filter(ripple => ripple.id !== newRipple.id));
-      }, 2000);
-    }
-  };
-
   if (!isAuthenticated) {
     return (
-      <div 
-        ref={containerRef}
-        className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden bg-gradient-to-br from-blue-950/20 via-blue-900/10 to-blue-800/20 cursor-none"
-        onMouseMove={handleMouseMove}
-        onClick={createRipple}
-      >
+      <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden bg-gradient-to-br from-blue-950/20 via-blue-900/10 to-blue-800/20">
         {/* Animated Background Particles */}
         {[...Array(8)].map((_, i) => (
           <motion.div
@@ -91,52 +53,6 @@ const Index = () => {
               duration: 10 + Math.random() * 10,
               repeat: Infinity,
               ease: "easeInOut"
-            }}
-          />
-        ))}
-
-        {/* Cursor Follower */}
-        <motion.div
-          className="absolute w-6 h-6 bg-blue-400/20 rounded-full pointer-events-none z-50 blur-sm"
-          style={{
-            x: springX,
-            y: springY,
-            translateX: "-50%",
-            translateY: "-50%",
-          }}
-        />
-        <motion.div
-          className="absolute w-2 h-2 bg-blue-300/60 rounded-full pointer-events-none z-50"
-          style={{
-            x: springX,
-            y: springY,
-            translateX: "-50%",
-            translateY: "-50%",
-          }}
-        />
-
-        {/* Click Ripples */}
-        {ripples.map((ripple) => (
-          <motion.div
-            key={ripple.id}
-            className="absolute border border-blue-400/40 rounded-full pointer-events-none"
-            initial={{
-              x: ripple.x,
-              y: ripple.y,
-              width: 0,
-              height: 0,
-              translateX: "-50%",
-              translateY: "-50%",
-              opacity: 1,
-            }}
-            animate={{
-              width: [0, 100, 200],
-              height: [0, 100, 200],
-              opacity: [1, 0.6, 0],
-            }}
-            transition={{
-              duration: 2,
-              ease: "easeOut",
             }}
           />
         ))}
