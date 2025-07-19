@@ -69,8 +69,8 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
         {!collapsed ? (
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/1dc80e14-28e6-47e5-97e6-02b62ea66892.png" 
-              alt="Fluidity Logo" 
+              src="/lovable-uploads/72a16ebe-0782-487c-9198-8511991cc5ff.png" 
+              alt="Logo" 
               className="h-6 w-6 mr-2" 
             />
             <h1 className="font-bold text-lg tracking-tight text-sidebar-foreground truncate">
@@ -81,8 +81,8 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
           </div>
         ) : (
           <img 
-            src="/lovable-uploads/1dc80e14-28e6-47e5-97e6-02b62ea66892.png" 
-            alt="Fluidity Logo" 
+            src="/lovable-uploads/72a16ebe-0782-487c-9198-8511991cc5ff.png" 
+            alt="Logo" 
             className="h-6 w-6 mx-auto" 
           />
         )}
