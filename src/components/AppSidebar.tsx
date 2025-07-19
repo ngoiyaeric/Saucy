@@ -14,6 +14,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 type NavItemProps = {
   to: string;
@@ -175,7 +176,9 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
         )}
       </nav>
 
-      <div className="p-4 border-t border-sidebar-border">
+      <div className="p-4 border-t border-sidebar-border space-y-3">
+        <ThemeToggle showLabel={showLabels} />
+        
         {!collapsed && (
           <div className="flex items-center gap-3">
             <div className="h-9 w-9 rounded-full bg-primary/90 flex items-center justify-center text-primary-foreground font-medium">
