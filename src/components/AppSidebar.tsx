@@ -101,7 +101,7 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
           <>
             <NavItem to="/" icon={Home} label="Dashboard" active={pathname === "/"} showLabel={showLabels} />
             <NavItem to="/markets" icon={BarChart2} label="Markets" active={pathname === "/markets"} showLabel={showLabels} />
-            <NavItem to="/agents" icon={Bot} label="AI Agents" active={pathname === "/agents"} showLabel={showLabels} />
+            <NavItem to="/agents" icon={Bot} label="Multi-Agents" active={pathname === "/agents"} showLabel={showLabels} />
             <NavItem to="/trading" icon={TrendingUp} label="Trading" active={pathname === "/trading"} showLabel={showLabels} />
             <NavItem to="/wallet" icon={Wallet} label="Wallet" active={pathname === "/wallet"} showLabel={showLabels} />
             <NavItem to="/transactions" icon={CreditCard} label="Transactions" active={pathname === "/transactions"} showLabel={showLabels} />
