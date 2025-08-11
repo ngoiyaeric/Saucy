@@ -69,20 +69,20 @@ export function AppSidebar({ collapsed, toggleSidebar }: AppSidebarProps) {
         {!collapsed ? (
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/72a16ebe-0782-487c-9198-8511991cc5ff.png" 
-              alt="Logo" 
+              src="/lovable-uploads/cf6fa035-4ba9-4dfd-bedc-fc804e81bb7b.png" 
+              alt="Saucy Logo" 
               className="h-6 w-6 mr-2" 
             />
             <h1 className="font-bold text-lg tracking-tight text-sidebar-foreground truncate">
               <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                Fluidity Index
+                Saucy Index
               </span>
             </h1>
           </div>
         ) : (
           <img 
-            src="/lovable-uploads/72a16ebe-0782-487c-9198-8511991cc5ff.png" 
-            alt="Logo" 
+            src="/lovable-uploads/cf6fa035-4ba9-4dfd-bedc-fc804e81bb7b.png" 
+            alt="Saucy Logo" 
             className="h-6 w-6 mx-auto" 
           />
         )}
