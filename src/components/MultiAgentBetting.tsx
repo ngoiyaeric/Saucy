@@ -92,7 +92,6 @@ const cloudProviders = [
 export function MultiAgentBetting() {
   const [isConnecting, setIsConnecting] = useState(false);
   const [connectedAPIs, setConnectedAPIs] = useState({
-    polymarket: false,
     coinbase: false
   });
   const [newAgent, setNewAgent] = useState({
@@ -163,11 +162,6 @@ export function MultiAgentBetting() {
             <CardTitle>Multi-Agent Betting System</CardTitle>
           </div>
           <div className="flex space-x-2">
-            {connectedAPIs.polymarket ? (
-              <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
-                Polymarket Connected
-              </Badge>
-            ) : null}
             {connectedAPIs.coinbase ? (
               <Badge variant="outline" className="bg-blue-500/10 text-blue-500 border-blue-500/20">
                 Coinbase Connected
@@ -176,21 +170,20 @@ export function MultiAgentBetting() {
           </div>
         </div>
         <CardDescription>
-          Configure your multi-agent betting system for Polymarket prediction markets
+          Configure your multi-agent trading system powered by Coinbase
         </CardDescription>
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="agents">
-          <TabsList className="grid grid-cols-4 mb-4">
+          <TabsList className="grid grid-cols-3 mb-4">
             <TabsTrigger value="agents">Agents</TabsTrigger>
-            <TabsTrigger value="markets">Markets</TabsTrigger>
             <TabsTrigger value="connections">API Connections</TabsTrigger>
             <TabsTrigger value="external">External Agents</TabsTrigger>
           </TabsList>
           
           <TabsContent value="agents" className="space-y-4">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-medium">Active Betting Agents</h3>
+              <h3 className="text-lg font-medium">Active Trading Agents</h3>
               <Button size="sm">
                 <Hexagon className="h-4 w-4 mr-2" />
                 Create New Agent
@@ -247,73 +240,13 @@ export function MultiAgentBetting() {
             </div>
           </TabsContent>
           
-          <TabsContent value="markets" className="space-y-4">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-medium">Available Polymarket Markets</h3>
-              <Button size="sm" variant="outline">
-                <Layers className="h-4 w-4 mr-2" />
-                Refresh Markets
-              </Button>
-            </div>
-            
-            <div className="rounded-md border">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Market</TableHead>
-                    <TableHead>Category</TableHead>
-                    <TableHead>Liquidity</TableHead>
-                    <TableHead>Current Odds</TableHead>
-                    <TableHead>Agent Recommended</TableHead>
-                    <TableHead></TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {mockMarkets.map((market) => (
-                    <TableRow key={market.id}>
-                      <TableCell className="font-medium">{market.title}</TableCell>
-                      <TableCell>{market.category}</TableCell>
-                      <TableCell>{market.liquidity}</TableCell>
-                      <TableCell>{market.odds}</TableCell>
-                      <TableCell>
-                        {market.recommended ? (
-                          <Badge className="bg-market-bull text-primary-foreground">Recommended</Badge>
-                        ) : (
-                          <Badge variant="outline">Neutral</Badge>
-                        )}
-                      </TableCell>
-                      <TableCell>
-                        <Button size="sm" variant="ghost">Analyze</Button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
-          </TabsContent>
           
           <TabsContent value="connections" className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Card className="border border-border">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-md">Polymarket API</CardTitle>
-                  <CardDescription>Connect to Polymarket for market access</CardDescription>
-                </CardHeader>
-                <CardFooter>
-                  <Button 
-                    onClick={() => handleConnect('polymarket')}
-                    disabled={connectedAPIs.polymarket || isConnecting} 
-                    className="w-full"
-                  >
-                    {connectedAPIs.polymarket ? "Connected" : isConnecting ? "Connecting..." : "Connect"}
-                  </Button>
-                </CardFooter>
-              </Card>
-              
+            <div className="grid grid-cols-1 gap-4">
               <Card className="border border-border">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-md">Coinbase API</CardTitle>
-                  <CardDescription>Connect your Coinbase wallet for funding</CardDescription>
+                  <CardDescription>Connect your Coinbase wallet for trading</CardDescription>
                 </CardHeader>
                 <CardFooter>
                   <Button 

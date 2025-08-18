@@ -38,16 +38,17 @@ const WalletPage = () => {
                   </div>
                 </div>
                 
+                
                 <div className="flex items-center justify-between py-3 border-b border-border">
                   <div className="flex items-center space-x-3">
                     <div className="h-8 w-8 rounded-full bg-blue-500/20 flex items-center justify-center">
-                      <span className="text-blue-500 font-medium">P</span>
+                      <span className="text-blue-500 font-medium">₿</span>
                     </div>
-                    <span className="font-medium">Polymarket</span>
+                    <span className="font-medium">Bitcoin</span>
                   </div>
                   <div className="text-right">
-                    <div className="font-medium">2,500 USDC</div>
-                    <div className="text-sm text-muted-foreground">$2,500.00</div>
+                    <div className="font-medium">0.045 BTC</div>
+                    <div className="text-sm text-muted-foreground">$4,230.50</div>
                   </div>
                 </div>
               </div>
